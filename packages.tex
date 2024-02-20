@@ -1,0 +1,271 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           PACKAGES                           %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\CTEXsetup[format={\Large\bfseries}]{section}       % 防止标题的居中
+\usepackage{fancyhdr}     %设置页眉页脚的宏包
+\usepackage{lastpage}     %引用最后一页
+
+
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=2cm]{geometry}
+\usepackage{ctex}%中文
+\usepackage{hyperref}%添加目录
+	\hypersetup{colorlinks =true,pdfstartview=Fit,breaklinks=true}
+\usepackage{amsmath, amssymb}%数学环境
+\usepackage{graphicx}%图片
+\usepackage{graphics}%图片
+\usepackage{tabularx}%表格
+\usepackage{float}%[H]强制固定图片、表格等当前位置
+\usepackage{lipsum}%填充一段系统中的文字，用以体验某些模块
+\usepackage{multicol}%分栏控制
+\usepackage{fancyvrb}%盒子
+\usepackage{bm}%加粗
+\usepackage{tikz,tikz-cd}
+\usepackage{wrapfig}%图片控制
+\DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}%字母字体mathscr
+%%伪代码
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%          		定理                           %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{tcolorbox}%绘制定理环境框框
+\tcbuselibrary{many}
+\definecolor{mygrey}{RGB}{140,150,160}%定义颜色
+% \newtcbtheorem[方括号中是编号的设置]{定理环境名\begin{}\end{}的括号中填入的名字}{pdf显示出来的名字}
+%{......
+%label separator=* 默认冒号:}
+%{thm 引用名前缀，配合前面label separator，\ref{}}
+%\begin{sometheorem}{My example}{myex}
+%My theorem text.
+%\end{sometheorem}
+%See Example~\ref{thm*myex}.                <----
+
+
+
+%定义
+\newtcbtheorem[auto counter,number within=section]{definition}{定义}
+{fonttitle=\bfseries\upshape, fontupper=\slshape,
+     arc=1mm, colback=white,colframe=mygrey,label separator={.}}{def}
+
+%prop,lemma,thm,corollary
+\newtcbtheorem[auto counter,number within=section]{thm}{定理}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=white,
+  colframe=mygrey,
+  label separator={.},
+  fonttitle=\bfseries,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=mygrey,
+    colframe=mygrey,
+  } 
+}{thm}
+%use counter from=thm 表示使用和thm一样的计数器
+\newtcbtheorem[use counter from=thm]{lemma}{引理}{
+  enhanced,sharp corners,attach boxed title to top left={yshifttext=-1mm },
+  colback=white,colframe=mygrey,label separator={.},fonttitle=\bfseries,
+  boxed title style={sharp corners,size=small,colback=mygrey,colframe=mygrey,} 
+}{lem}
+\newtcbtheorem[use counter from=thm]{cor}{推论}{
+  enhanced,sharp corners,attach boxed title to top left={yshifttext=-1mm },
+  colback=white,colframe=mygrey,label separator={.},fonttitle=\bfseries,
+  boxed title style={sharp corners,size=small,colback=mygrey,colframe=mygrey,} 
+}{cor}
+\newtcbtheorem[use counter from=thm]{prop}{命题}{
+  enhanced,sharp corners,attach boxed title to top left={yshifttext=-1mm },
+  colback=white,colframe=mygrey,label separator={.},fonttitle=\bfseries,
+  boxed title style={sharp corners,size=small,colback=mygrey,colframe=mygrey,} 
+}{prop}
+\newtcbtheorem[use counter from=thm]{axiom}{公理}{
+  enhanced,sharp corners,attach boxed title to top left={yshifttext=-1mm },
+  colback=white,colframe=mygrey,label separator={.},fonttitle=\bfseries,
+  boxed title style={sharp corners,size=small,colback=mygrey,colframe=mygrey,} 
+}{axiom}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%            证明与解                          %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{amsthm}
+\theoremstyle{plain}% from `amsthm'
+%证明、解
+\newenvironment{pf}{{\noindent\it\textbf{ Proof:}}\\}{\hfill $\square$\par}
+\newenvironment{sol}{{\noindent\it\textbf{ Sol:}}\\}{\hfill $\square$\par}
+\tcolorboxenvironment{pf}{% `proof' from `amsthm'
+blanker,breakable,left=5mm,
+before skip=10pt,after skip=10pt,
+borderline west={1mm}{0pt}{mygrey}}
+\tcolorboxenvironment{sol}{% `proof' from `amsthm'
+blanker,breakable,left=5mm,
+before skip=10pt,after skip=10pt,
+borderline west={1mm}{0pt}{mygrey}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           		 注释                          %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\newenvironment{rk}[1][]{
+	\mdfsetup{
+		frametitle={
+			\tikz[baseline=(current bounding box.east), outer sep=0pt]
+			\node[anchor=east,rectangle,fill=white]
+			{\strut Rk.\ifstrempty{#1}{}{~#1}};},
+		innertopmargin=10pt,linecolor=mygrey,
+		linewidth=2pt,topline=true,
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax
+}{\end{mdframed}}
+
+\newenvironment{nota}[1][]{
+	\mdfsetup{
+		frametitle={
+			\tikz[baseline=(current bounding box.east), outer sep=0pt]
+			\node[anchor=east,rectangle,fill=white]
+			{\strut Rk.\ifstrempty{#1}{}{~#1}};},
+		innertopmargin=10pt,linecolor=mygrey,
+		linewidth=2pt,topline=true,
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax
+}{\end{mdframed}}
+%上方标题无前缀的盒子
+\newenvironment{mybox}[1][]{
+	\mdfsetup{
+		frametitle={
+			\tikz[baseline=(current bounding box.east), outer sep=0pt]
+			\node[anchor=east,rectangle,fill=white]
+			{\strut \ifstrempty{#1}{}{~#1}};},
+		innertopmargin=10pt,linecolor=mygrey,
+		linewidth=2pt,topline=true,
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax
+}{\end{mdframed}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           		  例子                         %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\definecolor{tsyellow}{RGB}{200,200,200}
+\newenvironment{boxexample}
+{\begin{tcolorbox}
+[enhanced jigsaw,breakable,pad at break*=1mm,
+ colback=tsyellow!20,boxrule=0pt,frame hidden]
+}
+{\end{tcolorbox}}
+
+
+\newtheorem{envexample}{Example}[section]
+
+\newenvironment{ex}
+               {\begin{boxexample}\begin{envexample}}
+               {\end{envexample}\end{boxexample}}
+
+
+
+
+%%注释掉的内容，以前的定理环境
+%\usepackage{verbatim}
+%\begin{comment}
+%%%定理环境
+%\usepackage{ntheorem}%定理去编号
+%\newtheorem{definition}{\hspace{2em}定义}[chapter]
+%% 如果没有章, 只有节, 把上面的[chapter]改成[section] 
+%\newtheorem{thm}[definition]{\hspace{2em}定理}
+%\newtheorem{axiom}[definition]{\hspace{2em}Axiom} 
+%\newtheorem{lemma}[definition]{\hspace{2em}引理} 
+%\newtheorem{prop}[definition]{\hspace{2em}Proposition}
+%\newtheorem{cor}[definition]{\hspace{2em}推论} 
+%%前面几项共享编号，下面证明、注释与前面分开编号或者不编号
+%\newtheorem*{pf}{\hspace{2em}Proof}[section] 
+%\newtheorem*{rk}{\hspace{2em}Rk.}[section]
+%\newtheorem*{nota}{\hspace{2em}Notatoin.}[section]
+%\end{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           		   编号                        %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+
+%%%%代码%%%%
+%导入listings宏包
+\RequirePackage{listings}
+ 
+%先自定义三种颜色
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{CPPViolet} {HTML} {7040A0}
+
+\lstset{
+    basicstyle          =   \sffamily,          % 基本代码风格
+    keywordstyle        =   \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily\itshape,  % 注释的风格，斜体
+    stringstyle         =   \ttfamily,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   lrtb,   % 显示边框
+    language        =   python, 
+    basicstyle      =   \zihao{-5}\ttfamily,
+		 numberstyle=\tiny\color{gray},
+    keywordstyle    =   \color{blue},
+%    identifierstyle = \color{purple!50},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{dkgreen}\ttfamily,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std, UINT, BYTE},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,
+     queue, fstream, graphics.h, easyx.h, conio.h, cstdlib, cstring, string, ctime, 
+    queue, assert.h, algorithm, sstream, strstream, iomanip},
+    emphstyle=\color{CPPViolet}, 
+    escapechar = @,
+}

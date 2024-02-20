@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           	 newcommand                        %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author 
+\makeatother
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+
+%自定义数学符号
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\Hq{\mathbb{H}}
+\newcommand\Ss{\mathbb{S}}
+\newcommand\T{\mathbb{T}}
+\def\G{\Gamma}
+\renewcommand{\t}{\times}
+\def\d#1{\dot{#1}}
+\newcommand{\cs}{\cdots}
+
+\renewcommand{\r}{\rightarrow}
+\newcommand{\f}{\frac}
+\newcommand\cuti[1]{\mathbf{#1}}
+\newcommand{\p}{\partial}
+\newcommand{\D}{\Delta}
+\newcommand{\ck}[1]{\check{#1}}
+\newcommand{\ti}[1]{\tilde{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\def\U{\ol{U}}
+\newcommand{\q}{\quad}
+\renewcommand{\v}{\upsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\norm}[1]{\|{#1}\|}
+\newcommand{\normv}[1]{\|{#1}\|_{\alpha}}
+\newcommand{\normA}[1]{\|{#1}\|_{\beta}}
+\newcommand{\inn}{(\ ,\ )}
+\newcommand{\pair}[2]{\langle #1,#2\rangle}
+\renewcommand{\a}{\alpha}
+\newcommand{\e}{\epsilon}
+\newcommand{\dau}{\|D^\alpha u\|}
+\newcommand{\ckg}[2]{{C^{#1,#2}(\U)}}
+\newcommand{\cc}{C^\infty_c(U)}
+\newcommand{\wkp}[2]{{W^{#1,#2}(U)}}
+\newcommand{\wkpl}[2]{{W^{#1,#2}(U)}}
+\newcommand{\wloc}{{W^{k,p}_{loc}(U)}}
+\def\l{\lambda}
+\newcommand{\gete}[1]{\mathfrak{#1}}%哥特体字母
+\newcommand{\Tt}[1]{T_{\mathbf{1}}({#1})}%切空间
+
+\newcommand\tbbint{{-\mkern -16mu\int}}
+\newcommand\tbint{{\mathchar '26\mkern -14mu\int}}
+\newcommand\dbbint{{-\mkern -19mu\int}}
+\newcommand\dbint{{\mathchar '26\mkern -18mu\int}}
+\newcommand\bint{
+{\mathchoice{\dbint}{\tbint}{\tbint}{\tbint}}
+}
+\newcommand\bbint{
+{\mathchoice{\dbbint}{\tbbint}{\tbbint}{\tbbint}}
+}
+\def\h{H^{1}_0(U)}
+\def\L{L^2(U)}
+\newcommand{\pll}{\kern 0.56em/\kern -0.8em /\kern 0.56em}%平行符号
+

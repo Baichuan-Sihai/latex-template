@@ -1,0 +1,76 @@
+\documentclass[UTF8,10.5pt,a4paper]{ctexart}
+
+\input{packages.tex}
+\input{commands.tex}
+\usepackage{tikz}
+\usepackage{zhnumber} % change section number to chinese
+\renewcommand\thesection{\zhnum{section}}
+\renewcommand \thesubsection {\arabic{section}}
+
+%\includeonly{3}
+
+
+
+%\includeonly{representation}%只编译该文件，若曾完整编译过全文，则原来章节编号等仍保留为前一次效果
+\title{\textbf{笔记目录}}
+\author{Baichuan}
+\CTEXoptions[today=old]
+
+\begin{document}
+\maketitle
+\linespread{1.5}  %1.5倍行距
+\pagestyle{fancy} %页眉页脚设置
+\fancyhead{}      %清空默认页眉
+\fancyfoot{}      %清空默认页脚
+
+% \fancyhead[R]{\large 每周总结~\\}
+\fancyfoot[LE,RO]{{\large 共\quad \pageref{LastPage}\quad 页\quad 第\quad \thepage \quad 页}} %偶数页左侧(LE)，奇数页右侧(RO)标页码，oneside打印只用写RO
+\renewcommand{\headrulewidth}{1.5pt}  %页眉横线
+\renewcommand{\footrulewidth}{1.5pt}
+%\newgeometry{} 单独调节某页边距
+%\maketitle
+\thispagestyle{fancy}
+\section{当前笔记}
+\begin{enumerate}
+  \item Sobolev Spaces: Lebesgue空间, Frechet空间, 弱拓扑、弱*拓扑, 分布.
+  \item Matrix Computations: 数值线性代数.
+  \item  Finite element methods: 有限元理论(未完).
+  \item Shallow Water: 浅水方程理论, de Rham复形,  混合有限元形式, 相容有限元空间(未完).
+  % \item Thesis Notes1(23-12-27):  质量集中, 有限元的WENO重构, CG-WENO, CG1-DG2, 高阶保正、保局部极值原理格式.
+\end{enumerate}
+% \section{本科毕设}
+% \begin{enumerate}
+%   \item \href{run:./Week 1(22-12-18).pdf}{Week 1 (2022-12-18)}: 一阶线性偏微分方程, 首次积分, 特征线, 双曲性.
+%   \item \href{run:./Week 2(22-12-25).pdf}{Week 2 (2022-12-25)}: $\color{red}{\text{流体力学基本控制方程组}}$, 守恒型、非守恒型积分、微分方程.
+%   \item \href{run:./Week 3(23-01-01).pdf}{Week 3 (2023-01-01)}: 分布理论 (the theory of distributions).
+%   \item \href{run:./Week 4(23-01-08).pdf}{Week 4 (2023-01-08)}: Guermond一阶极值原则论文总结及2D Burgers算例复现, 边界附近有点问题.
+%   \item \href{run:./Week 5(23-01-15).pdf}{Week 5 (2023-01-15)}: DG.
+%   \item \href{run:./Week 6(23-02-05).pdf}{Week 6 (2023-02-05)}: 再看$\color{red}{\text{流体力学基本控制方程组}}$ (李新亮老师课程).
+%   \item\href{run:./Week 7(23-02-12).pdf}{ Week 7 (2023-02-12)}:  Guermond一阶、二阶极值原则论文.
+%   \item \href{run:./Week 8(23-02-20).pdf}{Week 8 (2023-02-20)}: 开学前总结, Guermond一阶、二阶极值原则论文, 质量集中.
+%   \item \href{run:./Week 9(23-02-26).pdf}{Week 9 (2023-02-26)}: fealpy求解定常Stokes方程.
+%   \item \href{run:./Week 10(23-03-04).pdf}{Week 10 (2023-03-04)}: 数值实验, 考虑边界后Burgers方程结果更加合理, 定常 Stokes方程的数值结果有问题 (我们毕设的格式是用于求解非定常问题而不是定常问题， 不能照搬师兄的方法).
+%   \item\href{run:./Week 11(23-03-12).pdff}{ Week 11 (2023-03-12)}: 毕设非定常可压缩Stokes方程离散形式, 时间推进采用显格式导致CFL数较小.
+%   \item \href{run:./Week 12(23-03-19).pdf}{Week 12 (2023-03-19)}: 将速度的时间推进格式替换为隐格式, 给出连续性方程格式守恒性、保正性证明.
+%   \item \href{run:./Week 13(23-03-26).pdf}{Week 13 (2023-03-26)}: 熵粘性.
+%   \item\href{run:./Week 14(23-04-02).pdf}{ Week 14 (2023-04-02)}: 尝试证明$L^2$稳定性.
+%   \item \href{run:./Week 15(23-04-09).pdf}{Week 15 (2023-04-09)}: 尝试证明$L^2$稳定性.
+%   \item \href{run:./Week 16(23-04-16).pdf}{Week 16 (2023-04-16)}: 文献翻译, 另一种可以使格式保正的粘性项.
+%   \item \href{run:./Week 17(23-04-23).pdf}{Week 17 (2023-04-23)}: 数值实验.
+%   \item \href{run:./Week 18(23-04-30).pdf}{Week 18 (2023-04-30)}: 三维Stokes方程.
+%   \item \href{run:./Week 19(23-05-28).pdf}{Week 19 (2023-05-28)}: 连续性方程改用$P^0$的DG方法, fealpy实现.
+%   \item \href{run:./Week 20(23-06-11).pdf}{Week 20 (2023-06-11)}: ENO, WENO, 谱方法, Gauss求积格式, 守恒律方程的高阶保正DG格式.
+%   \item \href{run:./Week21(23-06-25).pdf}{Week 21 (2023-06-25)}: Chi-Wang Shu DG课程笔记.
+%   \item \href{run:./Week 22(23-07-02).pdf}{Week 22 (2023-07-02)}: 守恒律方程的高阶保正DG格式的数值实现, HWENO.
+%   \item \href{run:./Week 23(23-07-09).pdf}{Week 23 (2023-07-09)}: FCT (未完).
+%   \item\href{run:./Week 24(23-07-16).pdf}{ Week 24 (2023-07-16)}: FCT.
+%   \item\href{run:./Week 25(23-07-23).pdf}{ Week 25 (2023-07-23)}: Runge-Kutta与图论中的树理论.
+%   \item \href{run:./Week 26(2023-07-30).pdf}{Week 26 (2023-07-30)}: Lagrange乘子法保正格式, Godunov定理, WENO+高阶连续有限元.
+%   \item \href{run:./Week 27(2023-08-06).pdf}{Week 27 (2023-08-06)}: 近世代数.
+%   \item \href{run:./Week 28(2023-08-13).pdf}{Week 28 (2023-08-13)}: Finite Elements II: 算子满射双射、双射的特征, coercive operators, Lax-Milgram定理, Banach-Necas-Babuska (BNB).
+%   \item \href{run:./Week 29(2023-08-20).pdf}{Week 29 (2023-08-20)}: 复分析内容: 全纯函数零点, Picard大小定理, Riemann映照定理.
+%   \item \href{run:./Week 30(2023-08-27).pdf}{Week 30 (2023-08-27)}: Finite Elements II: 误差分析.
+%   \item \href{run:./Week 30(2023-08-27).pdf}{Week 30 (2023-08-27)}: Finite Elements II: 误差分析.
+% \end{enumerate}
+
+\end{document}
